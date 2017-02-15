@@ -10,6 +10,10 @@
 
 @implementation HDTableViewCell
 
+- (void)dealloc{
+    NSLog(@"%@ dealloc", NSStringFromClass(self.class));
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {

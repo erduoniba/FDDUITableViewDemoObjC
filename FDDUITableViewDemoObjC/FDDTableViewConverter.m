@@ -12,13 +12,6 @@
 
 #import "FDDBaseCellModel.h"
 
-
-//@interface UITableView (FDDIdentifierCell)
-//
-//- (FDDBaseTableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath cellClass:(Class)cellClass;
-//
-//@end
-
 @implementation UITableView (FDDIdentifierCell)
 
 - (FDDBaseTableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath cellClass:(Class)cellClass{
@@ -48,6 +41,10 @@
 
 @implementation FDDTableViewConverter
 
+- (void)dealloc{
+    NSLog(@"%@ dealloc", NSStringFromClass(self.class));
+}
+
 - (instancetype)initWithTableViewController:(FDDBaseViewController *)tableViewController{
     self = [super init];
     if (self) {
@@ -75,12 +72,24 @@
     return nil;
 }
 
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    NSInteger sections = [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView]] integerValue];
+    if (sections > 0) {
+        return sections;
+    }
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSInteger rows = [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]] integerValue];
+    if (rows > 0) {
+        return rows;
+    }
     return _tableViewController.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     FDDBaseTableViewCell *backCell = [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]];
     if (backCell) {
         return backCell;
@@ -93,6 +102,40 @@
     return cell;
 }
 
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]];
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    return [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]] boolValue];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]] boolValue];
+}
+
+- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    return [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView]];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    return [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, title, @(index)]] integerValue];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(editingStyle), indexPath]];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, sourceIndexPath, destinationIndexPath]];
+}
+
+
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat backHeight = [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]] floatValue];
     if (backHeight > 0) {
@@ -102,7 +145,27 @@
     return cellModel.cellHeight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]] floatValue];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return [[self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]] floatValue];
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]];
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, @(section)]];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self seekResponseBlockWithFunction:NSStringFromSelector(_cmd) results:@[tableView, indexPath]];
 }
 
