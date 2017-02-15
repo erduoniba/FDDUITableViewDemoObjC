@@ -18,6 +18,7 @@
 		D90348401E52C69900C9F626 /* FDDBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D903483F1E52C69900C9F626 /* FDDBaseTableViewCell.m */; };
 		D90348431E52C6B900C9F626 /* FDDTableViewConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348421E52C6B900C9F626 /* FDDTableViewConverter.m */; };
 		D90348461E52D4C100C9F626 /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348451E52D4C100C9F626 /* HDTableViewCell.m */; };
+		D90348491E53F7DF00C9F626 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348481E53F7DF00C9F626 /* ViewController2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		D90348421E52C6B900C9F626 /* FDDTableViewConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDTableViewConverter.m; sourceTree = "<group>"; };
 		D90348441E52D4C100C9F626 /* HDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableViewCell.h; sourceTree = "<group>"; };
 		D90348451E52D4C100C9F626 /* HDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableViewCell.m; sourceTree = "<group>"; };
+		D90348471E53F7DF00C9F626 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		D90348481E53F7DF00C9F626 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				D90348241E52BB5000C9F626 /* AppDelegate.m */,
 				D90348261E52BB5000C9F626 /* ViewController.h */,
 				D90348271E52BB5000C9F626 /* ViewController.m */,
+				D90348471E53F7DF00C9F626 /* ViewController2.h */,
+				D90348481E53F7DF00C9F626 /* ViewController2.m */,
 				D90348441E52D4C100C9F626 /* HDTableViewCell.h */,
 				D90348451E52D4C100C9F626 /* HDTableViewCell.m */,
 				D90348291E52BB5000C9F626 /* Main.storyboard */,
@@ -188,6 +193,7 @@
 				D903483A1E52C63F00C9F626 /* FDDBaseViewController.m in Sources */,
 				D90348461E52D4C100C9F626 /* HDTableViewCell.m in Sources */,
 				D90348221E52BB5000C9F626 /* main.m in Sources */,
+				D90348491E53F7DF00C9F626 /* ViewController2.m in Sources */,
 				D903483D1E52C68400C9F626 /* FDDBaseCellModel.m in Sources */,
 				D90348431E52C6B900C9F626 /* FDDTableViewConverter.m in Sources */,
 				D90348401E52C69900C9F626 /* FDDBaseTableViewCell.m in Sources */,

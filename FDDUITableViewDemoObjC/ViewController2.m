@@ -1,13 +1,13 @@
 //
-//  ViewController.m
+//  ViewController2.m
 //  FDDUITableViewDemoObjC
 //
-//  Created by denglibing on 2017/2/14.
+//  Created by denglibing on 2017/2/15.
 //  Copyright © 2017年 denglibing. All rights reserved.
 //
 
-#import "ViewController.h"
 #import "ViewController2.h"
+#import "ViewController.h"
 
 #import "FDDTableViewConverter.h"
 
@@ -15,22 +15,18 @@
 
 #import "FDDBaseCellModel.h"
 
-@interface ViewController ()
+@interface ViewController2 ()
 
 @property (nonatomic, strong) FDDTableViewConverter *tableViewConverter;
 
 @end
 
-@implementation ViewController
-
-- (void)dealloc{
-    NSLog(@"%@ dealloc", NSStringFromClass(self.class));
-}
+@implementation ViewController2
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"ViewController";
+    self.title = @"ViewController2";
     
     NSArray *randomSources = @[@"Swift is now open source!",
                                @"We are excited by this new chapter in the story of Swift. After Apple unveiled the Swift programming language, it quickly became one of the fastest growing languages in history. Swift makes it easy to write software that is incredibly fast and safe by design. Now that Swift is open source, you can help make the best general purpose programming language available everywhere",
@@ -42,41 +38,24 @@
         FDDBaseCellModel *cellModel = [FDDBaseCellModel modelFromCellClass:HDTableViewCell.class cellHeight:[HDTableViewCell cellHeightWithCellData:randomSources[randomIndex]] cellData:randomSources[randomIndex]];
         [self.dataArr addObject:cellModel];
     }
-
+    
     [self disposeTableViewConverter];
 }
 
-
 - (void)disposeTableViewConverter{
     _tableViewConverter = [[FDDTableViewConverter alloc] initWithTableViewController:self];
+    _tableViewConverter.converterType = FDDTableViewConverter_Response;
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.delegate = _tableViewConverter;
     tableView.dataSource = _tableViewConverter;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
-    
-    __weak typeof(self) weakSelf = self;
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:didSelectRowAtIndexPath:) handleParams:^id(NSArray *results) {
-        [weakSelf.navigationController pushViewController:[ViewController2 new] animated:YES];
-        return nil;
-    }];
-    
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:titleForHeaderInSection:) handleParams:^id(NSArray *results) {
-        return @"";
-    }];
-    
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:cellForRowAtIndexPath:) handleParams:^id(NSArray *results) {
-        UITableView *tableView = results[0];
-        NSIndexPath *indexPath = results[1];
-        FDDBaseCellModel *cellModel = weakSelf.dataArr[indexPath.row];
-        FDDBaseTableViewCell *cell = [tableView cellForIndexPath:indexPath cellClass:cellModel.cellClass];
-        [cell setCellData:cellModel.cellData delegate:weakSelf];
-        [cell setSeperatorLine:indexPath numberOfRowsInSection:weakSelf.dataArr.count];
-        return cell;
-    }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.navigationController pushViewController:[ViewController new] animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
