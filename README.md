@@ -1,10 +1,10 @@
 ### UITableView如何开启极简模式
 
->UITableView作为iOS开发的最常用的控件，相信对我们开发来说再熟悉不过了，但是越简单的越熟悉的东西，往往也可以看出代码的质量，项目的结构等问题。本文针对 **UITableView中如何适应需求多变（新增删除、经常调换位置、高度变动等等）的通用解决方法** 及  **如何避免同一套完全相同的UITableViewDelegate、UITableViewDataSource代码在不同UIViewController多次实现**  两点进行展开讨论。不足之处还请指正。
+> UITableView作为iOS开发的最常用的控件，相信对我们开发来说再熟悉不过了，但是越简单的越熟悉的东西，往往也可以看出代码的质量，项目的结构等问题。本文针对 **UITableView中如何适应需求多变（新增删除、经常调换位置、高度变动等等）的通用解决方法** 及  **如何避免同一套完全相同的UITableViewDelegate、UITableViewDataSource代码在不同UIViewController多次实现**  两点进行展开讨论。不足之处还请指正。[原文地址](http://blog.csdn.net/u012390519/article/details/55260280) 
 
 
 
-#### 一、 **UITableView中如何适应需求多变（新增删除、经常调换位置、高度变动等等）的通用解决方法** 
+#### 一、 **UITableView中如何适应需求多变（新增删除、经常调换位置、高度变动等等）的通用解决方法**
 
 拿我负责的楼盘详情来说：
 
@@ -38,7 +38,7 @@
 
 遵循一切皆对象的思维方式，我采取了 `不同模块尽量使用独立的cell` 处理，比如
 
-![](http://7xqhx8.com1.z0.glb.clouddn.com/tableView2.png)
+![](http://7xqhx8.com1.z0.glb.clouddn.com/tableView2.jpeg)
 
 这一块，尽量分两个cell实现，毕竟下一次需求 `地址 ` 和 `最新开盘` 就分开了。
 
@@ -116,7 +116,7 @@
 
 
 
-#### 二、如何避免同一套完全相同的UITableViewDelegate、UITableViewDataSource代码在不同UIViewController多次实现
+#### **二、如何避免同一套完全相同的UITableViewDelegate、UITableViewDataSource代码在不同UIViewController多次实现**
 
 有了前面的构想，我们会惊奇的发现，实现一个无论简单或者复杂的 `UITableView` 仅仅取决于包含 `FDDBaseCellModel` 的数据源！而所有包含 `UITableView` 的 `UIViewController` 的 `UITableViewDelegate、UITableViewDataSource` 代码完全一致！
 
@@ -265,9 +265,9 @@ override internal func tableView(_ tableView: UITableView, numberOfRowsInSection
 
 
 
-#### 三、小结：
+#### **三、小结：**
 
-上面的两个问题点是同事 @袁强 抛出给到我，但是解决问题的思路很多出至于 @凌代平 ，很庆幸有这么一次机会来搬砖的机会。相信还会有其他更好的思路，如果你正好看到了请不吝赐教，🙏
+上面的两个问题点是同事 @袁强 抛出给到我，但是解决问题的思路很多出至于 @凌代平 ，很庆幸有这么一次机会来码砖的机会。相信还会有其他更好的思路，如果你正好看到了请不吝赐教，🙏
 
 代码整洁的道路很远，我相信只要需求理解到位，代码设计合理，我相信以后我们的实现 `UITableView` 时，只需要如下代码：
 
@@ -320,5 +320,4 @@ override internal func tableView(_ tableView: UITableView, numberOfRowsInSection
 [Swift源码地址](https://github.com/erduoniba/FDDUITableViewDemoSwift) 
 
 欢迎 **star** 
-
 
