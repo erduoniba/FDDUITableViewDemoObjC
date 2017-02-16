@@ -38,7 +38,7 @@
 
 遵循一切皆对象的思维方式，我采取了 `不同模块尽量使用独立的cell` 处理，比如
 
-![](http://7xqhx8.com1.z0.glb.clouddn.com/tableView2.png)
+![](http://7xqhx8.com1.z0.glb.clouddn.com/tableView2.jpeg)
 
 这一块，尽量分两个cell实现，毕竟下一次需求 `地址 ` 和 `最新开盘` 就分开了。
 
