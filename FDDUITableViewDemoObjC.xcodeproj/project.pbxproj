@@ -19,6 +19,7 @@
 		D90348791E541DCB00C9F626 /* FDDBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348731E541DCB00C9F626 /* FDDBaseTableViewCell.m */; };
 		D903487A1E541DCB00C9F626 /* FDDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348751E541DCB00C9F626 /* FDDBaseViewController.m */; };
 		D903487B1E541DCB00C9F626 /* FDDTableViewConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348771E541DCB00C9F626 /* FDDTableViewConverter.m */; };
+		D90348801E55969200C9F626 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D903487F1E55969200C9F626 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D90348751E541DCB00C9F626 /* FDDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDBaseViewController.m; sourceTree = "<group>"; };
 		D90348761E541DCB00C9F626 /* FDDTableViewConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDTableViewConverter.h; sourceTree = "<group>"; };
 		D90348771E541DCB00C9F626 /* FDDTableViewConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDTableViewConverter.m; sourceTree = "<group>"; };
+		D903487F1E55969200C9F626 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		D903481F1E52BB5000C9F626 /* FDDUITableViewDemoObjC */ = {
 			isa = PBXGroup;
 			children = (
+				D903487F1E55969200C9F626 /* README.md */,
 				D90348231E52BB5000C9F626 /* AppDelegate.h */,
 				D90348241E52BB5000C9F626 /* AppDelegate.m */,
 				D90348261E52BB5000C9F626 /* ViewController.h */,
@@ -190,6 +193,7 @@
 			files = (
 				D903487B1E541DCB00C9F626 /* FDDTableViewConverter.m in Sources */,
 				D90348281E52BB5000C9F626 /* ViewController.m in Sources */,
+				D90348801E55969200C9F626 /* README.md in Sources */,
 				D90348781E541DCB00C9F626 /* FDDBaseCellModel.m in Sources */,
 				D903487A1E541DCB00C9F626 /* FDDBaseViewController.m in Sources */,
 				D90348251E52BB5000C9F626 /* AppDelegate.m in Sources */,
@@ -351,6 +355,7 @@
 				D90348361E52BB5000C9F626 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

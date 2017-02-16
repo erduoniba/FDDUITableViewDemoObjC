@@ -6,7 +6,7 @@
 //  Copyright © 2017年 denglibing. All rights reserved.
 //
 
-#import "FDDBaseViewController.h"
+#import <UIKit/UIKit.h>
 
 @class FDDBaseTableViewCell;
 
@@ -29,11 +29,11 @@ typedef NS_ENUM(NSInteger, FDDTableViewConverterType) {
 };
 
 // tableView的协议方法处理类
-@interface FDDTableViewConverter : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface FDDTableViewConverter<TableViewCarrier>: NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) FDDTableViewConverterType converterType;
 
-- (instancetype)initWithTableViewController:(FDDBaseViewController *)tableViewController;
+- (instancetype)initWithTableViewCarrier:(TableViewCarrier)tableViewCarrier daraSources:(NSMutableArray *)dataArr;
 
 // 只有在选择 FDDTableViewConverter_Register 模式时，才会block回调
 - (void)registerTableViewMethod:(SEL)selector handleParams:(resultBlock)block;

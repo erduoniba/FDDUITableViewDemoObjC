@@ -23,6 +23,10 @@
 
 @implementation ViewController2
 
+- (void)dealloc{
+    NSLog(@"%@ dealloc", NSStringFromClass(self.class));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,7 +47,7 @@
 }
 
 - (void)disposeTableViewConverter{
-    _tableViewConverter = [[FDDTableViewConverter alloc] initWithTableViewController:self];
+    _tableViewConverter = [[FDDTableViewConverter alloc] initWithTableViewCarrier:self daraSources:self.dataArr];
     _tableViewConverter.converterType = FDDTableViewConverter_Response;
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];

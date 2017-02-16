@@ -30,9 +30,11 @@
 @end
 
 
-@interface FDDTableViewConverter () 
+@interface FDDTableViewConverter ()
 
-@property (nonatomic, weak) FDDBaseViewController *tableViewController;
+@property (nonatomic, weak) id tableViewCarrier;
+
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 //key:selector     value:block
 @property (nonatomic, strong) NSMutableDictionary *selectorBlocks;
@@ -45,13 +47,15 @@
     NSLog(@"%@ dealloc", NSStringFromClass(self.class));
 }
 
-- (instancetype)initWithTableViewController:(FDDBaseViewController *)tableViewController{
+- (instancetype)initWithTableViewCarrier:(id)tableViewCarrier daraSources:(NSMutableArray *)dataArr{
     self = [super init];
     if (self) {
-        _tableViewController = tableViewController;
+        _tableViewCarrier = tableViewCarrier;
+        _dataArr = dataArr;
     }
     return self;
 }
+
 
 - (NSMutableDictionary *)selectorBlocks{
     if (!_selectorBlocks) {
@@ -65,9 +69,9 @@
 }
 
 - (id)invocationWithSelector:(SEL)selector params:(NSArray *)params{
-    NSMethodSignature *sinature = [_tableViewController methodSignatureForSelector:selector];
+    NSMethodSignature *sinature = [_tableViewCarrier methodSignatureForSelector:selector];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sinature];
-    invocation.target = _tableViewController;
+    invocation.target = _tableViewCarrier;
     invocation.selector = selector;
     for (int i=0; i<params.count; i++) {
         id param = params[i];
@@ -120,7 +124,7 @@
 - (id)converterFunction:(NSString *)func params:(NSArray *)params{
     if (_converterType == FDDTableViewConverter_Response) {
         SEL selector = NSSelectorFromString(func);
-        if ([_tableViewController respondsToSelector:selector]) {
+        if ([_tableViewCarrier respondsToSelector:selector]) {
             return [self invocationWithSelector:selector params:params];
         }
         
@@ -148,7 +152,7 @@
     if (rows > 0) {
         return rows;
     }
-    return _tableViewController.dataArr.count;
+    return _dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -157,10 +161,10 @@
         return backCell;
     }
     
-    FDDBaseCellModel *cellModel = _tableViewController.dataArr[indexPath.row];
+    FDDBaseCellModel *cellModel = _dataArr[indexPath.row];
     FDDBaseTableViewCell *cell = [tableView cellForIndexPath:indexPath cellClass:cellModel.cellClass];
-    [cell setCellData:cellModel.cellData delegate:self];
-    [cell setSeperatorLine:indexPath numberOfRowsInSection:_tableViewController.dataArr.count];
+    [cell setCellData:cellModel.cellData delegate:_tableViewCarrier];
+    [cell setSeperatorLine:indexPath numberOfRowsInSection:_dataArr.count];
     return cell;
 }
 
@@ -203,7 +207,7 @@
     if (backHeight > 0) {
         return backHeight;
     }
-    FDDBaseCellModel *cellModel = _tableViewController.dataArr[indexPath.row];
+    FDDBaseCellModel *cellModel = _dataArr[indexPath.row];
     return cellModel.cellHeight;
 }
 

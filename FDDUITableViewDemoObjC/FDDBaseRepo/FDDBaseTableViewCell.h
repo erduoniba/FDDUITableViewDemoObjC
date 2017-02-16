@@ -65,9 +65,9 @@ typedef NS_ENUM(NSInteger, FDDBaseTableViewCellType) {
 + (CGFloat)cellHeightWithCellData:(ObjectType)cellData boundWidth:(CGFloat)width;
 
 
-- (void)setCellData:(id)fddCellData;
+- (void)setCellData:(ObjectType)fddCellData;
 
-- (void)setCellData:(id)fddCellData delegate:(id)delegate;
+- (void)setCellData:(ObjectType)fddCellData delegate:(id)delegate;
 
 - (void)setSeperatorLine:(NSIndexPath *)indexPath numberOfRowsInSection: (NSInteger)numberOfRowsInSection;
 

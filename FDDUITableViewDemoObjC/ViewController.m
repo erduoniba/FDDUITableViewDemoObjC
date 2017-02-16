@@ -32,6 +32,11 @@
     
     self.title = @"ViewController";
     
+    [self disposeDataSources];
+    [self disposeTableViewConverter];
+}
+
+- (void)disposeDataSources{
     NSArray *randomSources = @[@"Swift is now open source!",
                                @"We are excited by this new chapter in the story of Swift. After Apple unveiled the Swift programming language, it quickly became one of the fastest growing languages in history. Swift makes it easy to write software that is incredibly fast and safe by design. Now that Swift is open source, you can help make the best general purpose programming language available everywhere",
                                @"For students, learning Swift has been a great introduction to modern programming concepts and best practices. And because it is now open, their Swift skills will be able to be applied to an even broader range of platforms, from mobile devices to the desktop to the cloud.",
@@ -42,13 +47,11 @@
         FDDBaseCellModel *cellModel = [FDDBaseCellModel modelFromCellClass:HDTableViewCell.class cellHeight:[HDTableViewCell cellHeightWithCellData:randomSources[randomIndex]] cellData:randomSources[randomIndex]];
         [self.dataArr addObject:cellModel];
     }
-
-    [self disposeTableViewConverter];
 }
 
 
 - (void)disposeTableViewConverter{
-    _tableViewConverter = [[FDDTableViewConverter alloc] initWithTableViewController:self];
+    _tableViewConverter = [[FDDTableViewConverter alloc] initWithTableViewCarrier:self daraSources:self.dataArr];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.delegate = _tableViewConverter;
