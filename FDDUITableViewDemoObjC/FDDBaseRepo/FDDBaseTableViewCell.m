@@ -37,6 +37,7 @@
     if (self) {
         [self internalInit];
         
+        self.cellType = FDDBaseTableViewCellNone;
         _separateLineOffset = 0;
         sizeOnePx = 1.0 / [UIScreen mainScreen].scale;
     }
@@ -54,7 +55,6 @@
 -(void)internalInit{
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0];
     
     _lineColor = [UIColor colorWithRed:208/255.0 green:208/255.0 blue:208/255.0 alpha:1.0];
     

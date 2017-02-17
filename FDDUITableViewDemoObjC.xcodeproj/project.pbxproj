@@ -19,7 +19,6 @@
 		D90348791E541DCB00C9F626 /* FDDBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348731E541DCB00C9F626 /* FDDBaseTableViewCell.m */; };
 		D903487A1E541DCB00C9F626 /* FDDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348751E541DCB00C9F626 /* FDDBaseViewController.m */; };
 		D903487B1E541DCB00C9F626 /* FDDTableViewConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = D90348771E541DCB00C9F626 /* FDDTableViewConverter.m */; };
-		D90348801E55969200C9F626 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D903487F1E55969200C9F626 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,7 +150,8 @@
 				TargetAttributes = {
 					D903481C1E52BB5000C9F626 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = B9FH944VTE;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -193,7 +193,6 @@
 			files = (
 				D903487B1E541DCB00C9F626 /* FDDTableViewConverter.m in Sources */,
 				D90348281E52BB5000C9F626 /* ViewController.m in Sources */,
-				D90348801E55969200C9F626 /* README.md in Sources */,
 				D90348781E541DCB00C9F626 /* FDDBaseCellModel.m in Sources */,
 				D903487A1E541DCB00C9F626 /* FDDBaseViewController.m in Sources */,
 				D90348251E52BB5000C9F626 /* AppDelegate.m in Sources */,
@@ -318,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = B9FH944VTE;
 				INFOPLIST_FILE = FDDUITableViewDemoObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harry.FDDUITableViewDemoObjC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3ee15c7e-895b-4929-857b-1c988973c6e6";
+				PROVISIONING_PROFILE_SPECIFIER = wildcard_dev;
 			};
 			name = Debug;
 		};
@@ -329,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FDDUITableViewDemoObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harry.FDDUITableViewDemoObjC;

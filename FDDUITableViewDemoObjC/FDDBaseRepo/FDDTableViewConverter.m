@@ -94,7 +94,10 @@
         returnValue =  nil;
     }
     else if( !strcmp(returnType, @encode(id)) ){
-        [invocation getReturnValue:&returnValue];
+        // 感谢网友 暖心向阳 提出的问题
+        void *tempResult;
+        [invocation getReturnValue:&tempResult];
+        return (__bridge id)tempResult;
     }
     else {
         //如果返回值为普通类型NSInteger、BOOL、CGFloat

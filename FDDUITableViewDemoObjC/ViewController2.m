@@ -61,6 +61,14 @@
     [self.navigationController pushViewController:[ViewController new] animated:YES];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FDDBaseCellModel *cellModel = self.dataArr[indexPath.row];
+    FDDBaseTableViewCell *cell = [tableView cellForIndexPath:indexPath cellClass:cellModel.cellClass];
+    [cell setCellData:cellModel.cellData delegate:self];
+    [cell setSeperatorLine:indexPath numberOfRowsInSection:self.dataArr.count];
+    return cell;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
