@@ -114,7 +114,7 @@
             returnValue = [NSNumber numberWithInteger:*((NSInteger*)buffer)];
         }
         else if ( !strcmp(returnType, @encode(CGFloat)) ) {
-            returnValue = [NSNumber numberWithFloat:*((NSInteger*)buffer)];
+            returnValue = [NSNumber numberWithFloat:*((CGFloat*)buffer)];
         }
     }
     
