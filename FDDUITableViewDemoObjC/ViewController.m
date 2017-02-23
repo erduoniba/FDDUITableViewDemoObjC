@@ -60,18 +60,19 @@
     [self.view addSubview:tableView];
     
     __weak typeof(self) weakSelf = self;
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:didSelectRowAtIndexPath:) handleParams:^id(NSArray *results) {
-        [weakSelf.navigationController pushViewController:[ViewController2 new] animated:YES];
+    [_tableViewConverter registerTableViewMethod:@selector(tableView:didSelectRowAtIndexPath:) handleParams:^id(NSArray *params) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.navigationController pushViewController:[ViewController2 new] animated:YES];
         return nil;
     }];
     
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:titleForHeaderInSection:) handleParams:^id(NSArray *results) {
+    [_tableViewConverter registerTableViewMethod:@selector(tableView:titleForHeaderInSection:) handleParams:^id(NSArray *params) {
         return @"";
     }];
     
-    [_tableViewConverter registerTableViewMethod:@selector(tableView:cellForRowAtIndexPath:) handleParams:^id(NSArray *results) {
-        UITableView *tableView = results[0];
-        NSIndexPath *indexPath = results[1];
+    [_tableViewConverter registerTableViewMethod:@selector(tableView:cellForRowAtIndexPath:) handleParams:^id(NSArray *params) {
+        UITableView *tableView = params[0];
+        NSIndexPath *indexPath = params[1];
         FDDBaseCellModel *cellModel = weakSelf.dataArr[indexPath.row];
         FDDBaseTableViewCell *cell = [tableView cellForIndexPath:indexPath cellClass:cellModel.cellClass];
         [cell setCellData:cellModel.cellData delegate:weakSelf];

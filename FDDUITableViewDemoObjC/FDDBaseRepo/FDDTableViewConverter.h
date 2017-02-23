@@ -17,7 +17,7 @@
 @end
 
 
-typedef id (^resultBlock)(NSArray *results);
+typedef id (^resultBlock)(NSArray *params);
 
 // tableView的delegate和datasource方法处理类模式
 typedef NS_ENUM(NSInteger, FDDTableViewConverterType) {
