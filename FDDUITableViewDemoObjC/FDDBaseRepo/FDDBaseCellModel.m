@@ -11,7 +11,7 @@
 @implementation FDDBaseCellModel
 
 + (instancetype)modelFromCellClass:(Class)cellClass cellHeight:(CGFloat)cellHeight cellData:(id)cellData{
-    FDDBaseCellModel *cellModel = [FDDBaseCellModel new];
+    FDDBaseCellModel *cellModel = [[self alloc] init];
     cellModel.cellClass = cellClass;
     cellModel.cellHeight = cellHeight;
     cellModel.cellData = cellData;
